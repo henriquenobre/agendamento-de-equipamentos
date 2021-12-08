@@ -7,15 +7,15 @@ import { useCallback, useEffect, useState } from "react";
 function App() {
   const [appointmentList, setAppointmentList] = useState([]);
   const [query, SetQuery] = useState("")
-  const [sortBy, setSortBy] = useState('aptDate')
+  const [sortBy, setSortBy] = useState('Date')
   const [orderBy, setOrderBy] = useState('desc')
 
   const filteredAppoimentmentList = appointmentList.filter(
     item => {
       return(
-        item.petName.toLocaleLowerCase().includes(query.toLocaleLowerCase()) ||
-        item.ownerName.toLocaleLowerCase().includes(query.toLocaleLowerCase()) ||
-        item.aptNotes.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+        item.equipments.toLocaleLowerCase().includes(query.toLocaleLowerCase()) ||
+        item.responsible.toLocaleLowerCase().includes(query.toLocaleLowerCase()) ||
+        item.Notes.toLocaleLowerCase().includes(query.toLocaleLowerCase())
       )
     }
   ).sort((a,b) => {
@@ -43,7 +43,7 @@ function App() {
     <div className="App container mx-auto mt-6 font-thin">
       <h1 className="text-5xl text-center mb-3">
         <BiCalendar className="inline-block text-red-400 aling-top" />
-        Agendamento
+        Controle de Equipamentos
       </h1>
       <AddAppointment 
         onSendAppointment={myAppointment => setAppointmentList([...appointmentList, myAppointment])}

@@ -3,11 +3,11 @@ import { useState } from "react";
 
 const AddAppointment = ({onSendAppointment, lastId}) => {
   const clearData = {
-    ownerName: '',
-    petName:'',
-    aptDate: '',
-    aptTime: '',
-    aptNotes: ''
+    responsible: '',
+    equipments:'',
+    Date: '',
+    Time: '',
+    Notes: ''
   }
   let [toggleForm, setToggleForm] = useState(false)
   let [formData, setFormData] = useState(clearData)
@@ -15,10 +15,10 @@ const AddAppointment = ({onSendAppointment, lastId}) => {
   const formDataPublish = () => {
     const appointmentInfo = {
     id: lastId + 1,  
-    ownerName: formData.ownerName,
-    petName: formData.petName,
-    aptDate: formData.aptDate + ' ' + formData.aptTime,
-    aptNotes: formData.aptNotes
+    responsible: formData.responsible,
+    equipments: formData.equipments,
+    Date: formData.Date + ' ' + formData.Time,
+    Notes: formData.Notes
     }
     onSendAppointment(appointmentInfo)
     setFormData(clearData)
@@ -33,58 +33,58 @@ const AddAppointment = ({onSendAppointment, lastId}) => {
       { toggleForm &&
         <div className="border-r-2 border-b-2 border-l-2 border-light-blue-500 rounded-b-md pl-4 pr-4 pb-4">
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start  sm:pt-5">
-          <label htmlFor="ownerName" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+          <label htmlFor="responsible" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
             Responsável
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
-            <input type="text" name="ownerName" id="ownerName"
-            onChange={(event) => {setFormData({...formData, ownerName: event.target.value})}} value={formData.ownerName}
+            <input type="text" name="responsible" id="responsible"
+            onChange={(event) => {setFormData({...formData, responsible: event.target.value})}} value={formData.responsible}
               className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" />
           </div>
         </div>
 
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start  sm:pt-5">
-          <label htmlFor="petName" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+          <label htmlFor="equipments" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
             Equipamento
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
-            <input type="text" name="petName" id="petName"
-            onChange={(event) => {setFormData({...formData, petName: event.target.value})}} value={formData.petName}
+            <input type="text" name="equipments" id="equipments"
+            onChange={(event) => {setFormData({...formData, equipments: event.target.value})}} value={formData.equipments}
               className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" />
           </div>
         </div>
 
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start  sm:pt-5">
-          <label htmlFor="aptDate" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+          <label htmlFor="Date" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
             Data
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
-            <input type="date" name="aptDate" id="aptDate"
-            onChange={(event) => {setFormData({...formData, aptDate: event.target.value})}} value={formData.aptDate}
+            <input type="date" name="Date" id="Date"
+            onChange={(event) => {setFormData({...formData, Date: event.target.value})}} value={formData.Date}
               className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" />
           </div>
         </div>
 
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start  sm:pt-5">
-          <label htmlFor="aptTime" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+          <label htmlFor="Time" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
             Hora
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
-            <input type="time" name="aptTime" id="aptTime"
-            onChange={(event) => {setFormData({...formData, aptTime: event.target.value})}} value={formData.aptTime}
+            <input type="time" name="Time" id="Time"
+            onChange={(event) => {setFormData({...formData, Time: event.target.value})}} value={formData.Time}
               className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md" />
           </div>
         </div>
 
         <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start  sm:pt-5">
-          <label htmlFor="aptNotes" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+          <label htmlFor="Notes" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
             Observações
           </label>
           <div className="mt-1 sm:mt-0 sm:col-span-2">
-            <textarea id="aptNotes" 
-            onChange={(event) => {setFormData({...formData, aptNotes: event.target.value})}} value={formData.aptNotes}
+            <textarea id="Notes" 
+            onChange={(event) => {setFormData({...formData, Notes: event.target.value})}} value={formData.Notes}
             name="aptNotes" rows="3"
-              className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Detailed comments about the condition"></textarea>
+              className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Informações do agendamento"></textarea>
           </div>
         </div>
 
